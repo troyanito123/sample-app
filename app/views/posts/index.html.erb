@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto px-3 pt-3 pb-4 bg-white shadow">
+      <h1 class="text-center text-primary">All Posts</h1>
+      <table class="table">
+        <thead>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Options</th>
+        </thead>
+        <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.body.truncate(30) %></td>
+            <td>
+              <%= link_to 'Show', post_path(post) %>
+              <%= link_to 'Edit', edit_post_path(post) %>
+              <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: 'Are you destroy this post?'} %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

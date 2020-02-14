@@ -7,30 +7,51 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav mr-auto">
+    <% if logged_in? %>
+      <ul class="navbar-nav mr-auto ">
         <li class="nav-item">
-          <%= link_to 'Home', static_pages_home_path, class: 'nav-link text-primary' %>
+          <%= link_to 'Posts', posts_path, class: 'nav-link text-primary' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Help', static_pages_help_path, class: 'nav-link text-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Contact', static_pages_contact_path, class: 'nav-link text-primary' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'About', static_pages_about_path, class: 'nav-link text-primary' %>
+          <%= link_to 'New Post', new_post_path, class: 'nav-link text-primary' %>
         </li>
       </ul>
 
-      <ul class="navbar-nav ml-auto ">
+    <% else %>
+        <!--        este ul es para mantener el formato no borrar-->
+        <ul class="navbar-nav mr-auto "></ul>
+    <% end %>
+
+    <ul class="navbar-nav mx-2">
+      <li class="nav-item">
+        <%= link_to 'Home', static_pages_home_path, class: 'nav-link text-primary' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Help', static_pages_help_path, class: 'nav-link text-primary' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Contact', static_pages_contact_path, class: 'nav-link text-primary' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'About', static_pages_about_path, class: 'nav-link text-primary' %>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mx-2">
+
+      <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to 'logout', logout_path, method: :delete, class: 'nav-link text-primary' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Register', new_user_path, class: 'nav-link text-primary' %>
+        </li>
         <li class="nav-item">
           <%= link_to 'Login', login_path, class: 'nav-link text-primary' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Register', new_users_path, class: 'nav-link text-primary' %>
-        </li>
-      </ul>
+      <% end %>
+    </ul>
     </div>
   </div>
 </nav>

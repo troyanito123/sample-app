@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  skip_before_action :logged_in_user
+  skip_before_action :logged_in_user, except: [:destroy]
 
   def new
   end
@@ -8,12 +8,19 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: session_params[:email])
     if( user && user.authenticate(session_params[:password]))
+      log_in(user)
       flash[:success] = I18n.t 'user.login'
-      redirect_to static_pages_home_path
+      redirect_to posts_path
     else
       flash[:danger] = I18n.t 'user.errors.login'
       render :new
     end
+  end
+
+  def destroy
+    log_out
+    flash[:secondary] = I18n.t 'user.logout'
+    redirect_to root_path
   end
 
   private

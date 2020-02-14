@@ -37,5 +37,12 @@ en:
   user:
     create: "User create successfully! Please log in!"
     login: "Welcome! Enjoy the sample app!"
+    logout: "Come back soon!"
     errors:
       login: "Credential incorrect! please try again ..."
+
+  post:
+    create: "Post create successfully!"
+    update: "Post updated!"
+    destroy: "Post has been deleted!"
+
