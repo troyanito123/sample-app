@@ -9,4 +9,8 @@ module ApplicationHelper
     end
   end
 
+  def app_name
+    'Sample App'
+  end
+
 end

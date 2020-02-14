@@ -1,6 +1,17 @@
 <% provide(:title, 'Contact' ) %>
-<h1>Contact</h1>
-<p>
-  Contact the Ruby on Rails Tutorial about the sample app at the
-  <a href="https://www.railstutorial.org/contact">contact page</a>.
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+
+      <h1 class="display-4 text-primary">Contact</h1>
+      <p>
+        Contact the Ruby on Rails Tutorial about the sample app at the
+        <a href="https://www.railstutorial.org/contact">contact page</a>.
+      </p>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <%= image_tag "contact.svg", alt: "home", class: 'img-fluid' %>
+    </div>
+  </div>
+</div>
