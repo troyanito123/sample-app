@@ -5,7 +5,30 @@
       <hr>
       <p> Created by: <%= @user.name %> </p>
       <p> <%= I18n.l(@post.created_at, format: :long) %> </p>
-      <p> <%= @post.body %> </p>
+      <p class="text-justify"> <%= @post.body %> </p>
+
+      <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary btn-block'%>
+      <%= link_to 'Delete', post_path(@post), method: 'delete',
+                  data: {confirm: 'Are you sure?'}, class: 'text-danger text-center' %>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto px-3 pt-3 pb-4 bg-white shadow">
+      <h2 class="text-center text-primary"> Comments </h2>
+      <hr>
+      <div id="comment_pane">
+        <% @comments.each do |comment| %>
+          <%= render 'comments/comment', {comment: comment, user: @user, post: @post} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto px-3 pt-3 pb-4 bg-white shadow">
+      <h2 class="text-center text-primary"> Send a Comment </h2>
+      <hr>
+        <%= render 'comments/form' %>
     </div>
   </div>
 </div>

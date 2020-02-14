@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   get 'static_pages/contact'
 
-  resources 'users', 'posts'
+  resources 'users'
+  resources 'posts' do
+    resources 'comments', only: [:create, :edit, :update, :destroy]
+  end
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

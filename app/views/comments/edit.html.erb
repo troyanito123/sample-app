@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto px-3 pt-3 pb-4 bg-white shadow">
+      <h1 class="text-center text-primary"> Edit your comment </h1>
+      <hr>
+      <%= form_for ([@post, @comment]) do |f| %>
+
+        <div class="form-group">
+          <%= f.label 'Body:', class: 'text-primary' %>
+          <%= f.text_area :body, class: 'form-control border-0 bg-light shadow-sm' %>
+          <small class="text-danger">
+            <%= @comment.errors.messages[:body].first %>
+          </small>
+        </div>
+
+        <%= f.submit 'Update comment', class: 'btn btn-primary btn-block' %>
+        <%= link_to "Cancel", post_path(@post),class: 'btn btn-secondary btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>

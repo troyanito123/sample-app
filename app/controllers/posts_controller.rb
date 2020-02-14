@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
+
 
   def index
     @posts = Post.all
@@ -23,6 +25,8 @@ class PostsController < ApplicationController
 
   def show
     @user = @post.user
+    @comments = @post.comments.order('created_at DESC')
+    @comment = Comment.new
   end
 
   def edit
@@ -50,7 +54,12 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find_by(id: params[:id])
+    @post = Post.find(params[:id])
+  end
+
+  def handle_record_not_found
+    flash[:warning] = I18n.t 'not_found'
+    redirect_to posts_path
   end
 
 end

@@ -33,6 +33,7 @@ en:
   hello: "Hello world"
 
   restricted_page: "Please logged in ..."
+  not_found: "Resource not found ..."
 
   user:
     create: "User create successfully! Please log in!"
@@ -45,4 +46,11 @@ en:
     create: "Post create successfully!"
     update: "Post updated!"
     destroy: "Post has been deleted!"
+
+  comment:
+    create: "Comment successfully send ..."
+    destroy: "Comment has been deleted!"
+    update: "Comment has been edited"
+    errors:
+      create: "Oops .."
 

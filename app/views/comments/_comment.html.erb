@@ -1,0 +1,10 @@
+<div class="bg-light shadow-sm mx-3">
+  <p class="mb-0 text-muted"> <%= I18n.l(comment.created_at, format: :long) %></p>
+  <p class="mb-0"><strong> <%= user.name %> </strong> say: </p>
+  <p class="mx-3 mb-0"><%= comment.body %></p>
+  <p class="text-right">
+    <%= link_to 'Edit', edit_post_comment_path(post, comment), class: 'badge badge-pill badge-primary' %>
+    <%= link_to 'Delete', post_comment_path(post, comment), method: 'delete',
+                data: {confirm: 'Are you sure deleted this comment?'}, class: 'badge badge-pill badge-danger' %>
+  </p>
+</div>

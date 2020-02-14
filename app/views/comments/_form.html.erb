@@ -1,0 +1,11 @@
+<%= form_with model: [@post, @comment] do |f| %>
+  <div class="form-group">
+    <%= f.label 'Comment:', class: 'text-primary' %>
+    <%= f.text_area :body, class: 'form-control border-0 bg-light shadow-sm' %>
+    <small class="text-danger">
+      <%= @comment.errors.messages[:body].first %>
+    </small>
+  </div>
+
+  <%= f.submit 'Send commment', class: 'btn btn-primary btn-block' %>
+<% end %>
