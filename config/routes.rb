@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resource 'users'
 
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+
 end

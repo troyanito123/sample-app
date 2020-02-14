@@ -34,3 +34,6 @@ en:
 
   user:
     create: "User create successfully! Please log in!"
+    login: "Welcome! Enjoy the sample app!"
+    errors:
+      login: "Credential incorrect! please try again ..."
