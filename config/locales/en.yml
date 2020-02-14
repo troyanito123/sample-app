@@ -32,6 +32,8 @@
 en:
   hello: "Hello world"
 
+  restricted_page: "Please logged in ..."
+
   user:
     create: "User create successfully! Please log in!"
     login: "Welcome! Enjoy the sample app!"
