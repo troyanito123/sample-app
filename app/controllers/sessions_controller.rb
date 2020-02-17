@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   skip_before_action :logged_in_user, except: [:destroy]
+  before_action :user_login, except: [:destroy]
 
   def new
   end
@@ -26,5 +27,12 @@ class SessionsController < ApplicationController
   private
   def session_params
     params.require(:session).permit(:email, :password)
+  end
+
+  def user_login
+    if !current_user.nil?
+      flash[:warning] = I18n.t 'logut'
+      redirect_back fallback_location: root_path
+    end
   end
 end

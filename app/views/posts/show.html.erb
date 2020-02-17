@@ -7,9 +7,11 @@
       <p> <%= I18n.l(@post.created_at, format: :long) %> </p>
       <p class="text-justify"> <%= @post.body %> </p>
 
-      <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary btn-block'%>
-      <%= link_to 'Delete', post_path(@post), method: 'delete',
-                  data: {confirm: 'Are you sure?'}, class: 'text-danger text-center' %>
+      <% if policy(@post).edit?  %>
+        <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary btn-block' %>
+        <%= link_to 'Delete', post_path(@post), method: 'delete',
+                    data: {confirm: 'Are you sure?'}, class: 'text-danger text-center' %>
+      <% end %>
     </div>
   </div>
 

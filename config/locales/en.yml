@@ -34,6 +34,7 @@ en:
 
   restricted_page: "Please logged in ..."
   not_found: "Resource not found ..."
+  logut: "Please logout for in with other account!"
 
   user:
     create: "User create successfully! Please log in!"

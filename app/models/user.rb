@@ -11,4 +11,12 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {minimum: 6, maximum: 255}, uniqueness: true,
             format: {with: VALID_EMAIL_REGEX}
   has_secure_password
+
+  def admin?
+    role.code == 'ADMIN'
+  end
+
+  def normal_user?
+    role.code == 'USER'
+  end
 end

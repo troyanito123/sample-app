@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto px-3 pt-3 pb-4 bg-white shadow">
+      <h1 class="text-center text-primary">All Users</h1>
+      <table class="table">
+        <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Options</th>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td>
+              <%= link_to 'Show', user_path(user) %>
+              <%= link_to 'Edit', edit_user_path(user) %>
+              <%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: 'Are you destroy this user?'} %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
