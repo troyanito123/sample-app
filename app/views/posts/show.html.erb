@@ -19,7 +19,7 @@
       <hr>
       <div id="comment_pane">
         <% @comments.each do |comment| %>
-          <%= render 'comments/comment', {comment: comment, user: @user, post: @post} %>
+          <%= render 'comments/comment', {comment: comment} %>
         <% end %>
       </div>
     </div>
