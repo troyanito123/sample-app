@@ -4,6 +4,7 @@
       <h1 class="text-center text-primary">All Users</h1>
       <table class="table">
         <thead>
+        <th>Avatar</th>
         <th>Name</th>
         <th>Email</th>
         <th>Options</th>
@@ -11,12 +12,20 @@
         <tbody>
         <% @users.each do |user| %>
           <tr>
+            <td>
+              <% if user.avatar.attached? %>
+                <%= image_tag user.avatar, alt: "avatar", size: "40", class: 'rounded-circle' %>
+              <% else %>
+                <%= image_tag "no-user.png", alt: "NO USER", size: "40", class: 'rounded-circle' %>
+              <% end %>
+            </td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
+            <td><%= user.role.name %></td>
             <td>
-              <%= link_to 'Show', user_path(user) %>
-              <%= link_to 'Edit', edit_user_path(user) %>
-              <%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: 'Are you destroy this user?'} %>
+              <%= link_to 'Edit', edit_user_path(user), class: 'badge badge-pill badge-primary' %>
+              <%= link_to 'Delete', user_path(user), method: :delete,
+                          data: {confirm: 'Are you destroy this user?'}, class: 'badge badge-pill badge-danger' %>
             </td>
           </tr>
         <% end %>

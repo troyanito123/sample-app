@@ -38,6 +38,7 @@ en:
 
   user:
     create: "User create successfully! Please log in!"
+    update: "User updated successfully!"
     login: "Welcome! Enjoy the sample app!"
     logout: "Come back soon!"
     errors:

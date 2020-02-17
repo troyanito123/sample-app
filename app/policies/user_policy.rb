@@ -20,4 +20,17 @@ class UserPolicy < ApplicationPolicy
     new?
   end
 
+  def edit?
+    puts record.inspect
+    user.admin? || user == record
+  end
+
+  def update?
+    edit?
+  end
+
+  def destroy?
+    edit?
+  end
+
 end
