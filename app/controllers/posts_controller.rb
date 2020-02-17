@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     @user = @post.user
     @comments = @post.comments.order('created_at DESC')
     @comment = Comment.new
+    @images = @post.images
   end
 
   def edit
@@ -51,7 +52,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, images: [])
   end
 
   def set_post

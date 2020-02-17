@@ -3,9 +3,14 @@
     <div class="col-12 col-md-10 col-lg-8 mx-auto px-3 pt-3 pb-4 bg-white shadow">
       <h1 class="text-center text-primary"> <%= @post.title %> </h1>
       <hr>
-      <p> Created by: <%= @user.name %> </p>
+      <p class="mb-0"> Created by: <%= @user.name %> </p>
       <p> <%= I18n.l(@post.created_at, format: :long) %> </p>
       <p class="text-justify"> <%= @post.body %> </p>
+
+      <% @images.each do |image|  %>
+        <%= link_to image_tag(image, alt: image.filename, size: '300', class: 'img-thumbnail shadow m-2' ),
+                    rails_blob_path(image) %>
+      <% end %>
 
       <% if policy(@post).edit?  %>
         <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary btn-block' %>

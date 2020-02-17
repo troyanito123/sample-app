@@ -12,6 +12,10 @@ class PostPolicy < ApplicationPolicy
     index?
   end
 
+  def create?
+    index?
+  end
+
   def edit?
     user.admin? || record.user == user
   end

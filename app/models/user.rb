@@ -13,6 +13,17 @@ class User < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX}
   has_secure_password
 
+  validate :rule_avatar_validated
+
+  def rule_avatar_validated
+    if avatar.attached?
+      type = avatar.content_type.split('/').last
+      if !(type == 'jpg' || type == 'jpeg' || type == 'png')
+        errors.add(:avatar, "The only support formats are jpg, jpeg and png...")
+      end
+    end
+  end
+
   def admin?
     role.code == 'ADMIN'
   end

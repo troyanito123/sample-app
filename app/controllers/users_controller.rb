@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    puts user_params.inspect
+    @roles = Role.all
     @user.assign_attributes user_params
     if current_user.admin?
       @user.role = Role.find(params[:user][:role])
@@ -47,6 +47,8 @@ class UsersController < ApplicationController
       else
         redirect_to posts_path
       end
+    else
+      render :edit
     end
 
   end
